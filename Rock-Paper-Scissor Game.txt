@@ -1,0 +1,54 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Rock_Paper_scissor {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Random ran = new Random();
+
+        System.out.println("Rock Paper and Scissor game ");
+
+        int userwins=0;
+        int computerwins=0;
+
+        for(int round=1; round<=5; round++) {
+            System.out.println("Round" +round);
+            String[] options ={"Rock", "Paper", "Scissors"};
+
+            System.out.println("Enter your choice(0 for rock, 1 for paper and 2 for scissors)");
+            int choice = sc.nextInt();
+            int computer_choice = ran.nextInt(3);
+
+            System.out.println("You choose" + options[choice]);
+            System.out.println("computer_choose" + options[computer_choice]);
+
+            if (choice == computer_choice) {
+                System.out.println("Its a tie\n");
+
+            } else if ((choice == 0 && computer_choice == 2) || (choice == 1 && computer_choice == 0) || (choice == 2 && computer_choice == 1)) {
+                System.out.println("You win this round\n");
+                userwins++;
+            } else {
+                System.out.println("Computer wins this round\n");
+                computerwins++;
+            }
+        }
+        System.out.println("Game Over\n");
+        System.out.print("The result of the match is:");
+
+        //to decide who won the game with how many points
+        if(userwins>computerwins){
+            System.out.println("You win the game with "+userwins+" points");
+        }
+        else if(userwins<computerwins){
+            System.out.println(" Computer wins the game with "+computerwins+" points");
+        }
+        else{
+            System.out.println("Its a tie with "+userwins+ " points each");
+        }
+        //to close the scanner
+        sc.close();
+    }
+}
